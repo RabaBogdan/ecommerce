@@ -15,14 +15,14 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long categoriesId;
 
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "product_category", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
     @JsonIgnore
     private List<Products> productsList;
 

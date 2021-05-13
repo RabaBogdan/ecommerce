@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "/api/v1")
 public class ProductsController {
 
     private final ProductsService productsService;
@@ -16,17 +17,17 @@ public class ProductsController {
         this.productsService = productsService;
     }
 
-    @GetMapping("api/v1/products")
+    @GetMapping("/products")
     List<Products> findAllCategories(){
         return (List<Products>) productsService.findAllProducts();
     }
 
-    @GetMapping("/api/v1/products/{id}")
+    @GetMapping("/products/{id}")
     public Products findById(@PathVariable("id") long id){
         return productsService.findById(id);
     }
 
-    @PostMapping("/api/v1/products")
+    @PostMapping("/products")
     public Products save(@RequestBody Products products) {
         return productsService.saveProducts(products);
     }
